@@ -31,9 +31,15 @@ colnames(data) <- c("date","time","GlobalActivePower","GlobalReactivePower","Vol
 
 ## Cleaning the data and preparing data for plotting.
 
+data$time <- strptime(paste(data$date,data$time, sep = " "), format = "%d/%m/%Y %H:%M:%S")
 data$date <- as.Date(data$date,format="%d/%m/%Y")
-data$time <- strptime(data$time,format="%H:%M:%S")
 
 ## Plot the data and save the plot as plot1.png
+png(filename = "plot1.png", width = 480, height = 480)
+
+hist(data$GlobalActivePower,col="red",main="Global Active Power",xlab="Global Active Power (kilowatts)")
+
+dev.off()
+
 
 
