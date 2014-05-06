@@ -30,7 +30,7 @@ data <- read.table(file="../rawData/household_power_consumption.txt",sep=";",hea
 colnames(data) <- c("date","time","GlobalActivePower","GlobalReactivePower","Voltage","GlobalIntensity","SubMetering1","SubMetering2","SubMetering3")
 
 ## Cleaning the data and preparing data for plotting.
-data$time <- strptime(paste(data$date,data$time, sep = " "), format = "%d/%m/%Y %H:%M:%S")
+data$datetime <- strptime(paste(data$date,data$time, sep = " "), format = "%d/%m/%Y %H:%M:%S")
 data$date <- as.Date(data$date,format="%d/%m/%Y")
 
 
@@ -38,7 +38,7 @@ data$date <- as.Date(data$date,format="%d/%m/%Y")
 
 png(filename = "plot2.png", width = 480, height = 480)
 
-with(data, plot(y=GlobalActivePower,x=time, type = "n",xlab ="", ylab="Global Active Power (kilowatts)"))
-with(data, lines(y=GlobalActivePower,x=time))
+with(data, plot(y=GlobalActivePower,x=datetime, type = "n",xlab ="", ylab="Global Active Power (kilowatts)"))
+with(data, lines(y=GlobalActivePower,x=datetime))
 
 dev.off()

@@ -31,7 +31,7 @@ colnames(data) <- c("date","time","GlobalActivePower","GlobalReactivePower","Vol
 
 ## Cleaning the data and preparing data for plotting.
 
-data$time <- strptime(paste(data$date,data$time, sep = " "), format = "%d/%m/%Y %H:%M:%S")
+data$datetime <- strptime(paste(data$date,data$time, sep = " "), format = "%d/%m/%Y %H:%M:%S")
 data$date <- as.Date(data$date,format="%d/%m/%Y")
 
 ## Plot the data and save the plot as plot1.png
